@@ -1,0 +1,228 @@
+item {
+id: 1
+name: 'speed15'
+}
+item {
+id: 2
+name: 'speed30'
+}
+item {
+id: 3
+name: 'speed40'
+}
+item {
+id: 4
+name: 'speed50'
+}
+item {
+id: 5
+name: 'speed60'
+}
+item {
+id: 6
+name: 'speed70'
+}
+item {
+id: 7
+name: 'speed80'
+}
+item {
+id: 8
+name: 'zakaz_skr_w_lewo_prosto'
+}
+item {
+id: 9
+name: 'zakaz_skr_w_prawo_prosto'
+}
+item {
+id: 10
+name: 'zakaz_prosto'
+}
+item {
+id: 11
+name: 'zakaz_lewo'
+}
+item {
+id: 12
+name: 'zakaz_lewo_prawo'
+}
+item {
+id: 13
+name: 'zakaz_prawo'
+}
+item {
+id: 14
+name: 'zakaz_wyprzedzania'
+}
+item {
+id: 15
+name: 'zakaz_zawracania'
+}
+item {
+id: 16
+name: 'zakaz_wiazdu'
+}
+item {
+id: 17
+name: 'zakaz_grania_na_trabce'
+}
+item {
+id: 18
+name: 'koniec_zakazu40'
+}
+item {
+id: 19
+name: 'koniec_zakazu50'
+}
+item {
+id: 20
+name: 'nakaz_prawo_prosto'
+}
+item {
+id: 21
+name: 'nakaz_prosto'
+}
+item {
+id: 22
+name: 'nakaz_lewo'
+}
+item {
+id: 23
+name: 'nakaz_lewo_prawo'
+}
+item {
+id: 24
+name: 'nakaz_prawo'
+}
+item {
+id: 25
+name: 'nakaz_jazdy_z_lewej'
+}
+item {
+id: 26
+name: 'nakaz_jazdy_z_prawej'
+}
+item {
+id: 27
+name: 'rondo'
+}
+item {
+id: 28
+name: 'droga_ekspresowa'
+}
+item {
+id: 29
+name: 'nakaz_grania_na_trabce'
+}
+item {
+id: 30
+name: 'droga_dla_rowerow'
+}
+item {
+id: 31
+name: 'zawracanie'
+}
+item {
+id: 32
+name: 'kurwa_co_to'
+}
+item {
+id: 33
+name: 'sygnalizacja'
+}
+item {
+id: 34
+name: 'inne_niebezpieczenstwo'
+}
+item {
+id: 35
+name: 'przejscie_dla_pieszych'
+}
+item {
+id: 36
+name: 'przejscie_dla_rowerow'
+}
+item {
+id: 37
+name: 'dzieci'
+}
+item {
+id: 38
+name: 'dab_left'
+}
+item {
+id: 39
+name: 'dab_right'
+}
+item {
+id: 40
+name: 'stromo_down'
+}
+item {
+id: 41
+name: 'stromo_up'
+}
+item {
+id: 42
+name: 'daj_chinski_sprzedawca_jaj'
+}
+item {
+id: 43
+name: 'skret_w_prawo'
+}
+item {
+id: 44
+name: 'skret_w_lewo'
+}
+item {
+id: 45
+name: 'osiedle'
+}
+item {
+id: 46
+name: 'zakrety'
+}
+item {
+id: 47
+name: 'piciong'
+}
+item {
+id: 48
+name: 'roboty'
+}
+item {
+id: 49
+name: 'zakrety_zakrety'
+}
+item {
+id: 50
+name: 'przejazd_kol_z_zaporami'
+}
+item {
+id: 51
+name: 'wypadki'
+}
+item {
+id: 52
+name: 'stop_chin'
+}
+item {
+id: 53
+name: 'zakaz_ruchu'
+}
+item {
+id: 54
+name: 'zakaz_zatrzymywania'
+}
+item {
+id: 55
+name: 'zakaz_wjazdu'
+}
+item {
+id: 56
+name: 'costam'
+}
+item {
+id: 57
+name: 'zakaz_wjazdu_chin'
+}

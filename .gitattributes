@@ -1,0 +1,6 @@
+.record filter=lfs diff=lfs merge=lfs -text
+DESKTOP-7B4K4AO filter=lfs diff=lfs merge=lfs -text
+data-00000-of-00001 filter=lfs diff=lfs merge=lfs -text
+*.pb filter=lfs diff=lfs merge=lfs -text
+*.data-00000-of-00001 filter=lfs diff=lfs merge=lfs -text
+*.DESKTOP-7B4K4AO filter=lfs diff=lfs merge=lfs -text
