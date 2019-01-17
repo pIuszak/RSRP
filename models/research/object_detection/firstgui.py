@@ -7,6 +7,7 @@ import numpy as np
 import tensorflow as tf
 import sys
 
+
 sys.path.append("..")
 from utils import label_map_util
 from utils import visualization_utils as vis_util
@@ -36,43 +37,42 @@ detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
 num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 
 class App:
+    CURR_CLASS = 'N/A'
+                
     def __init__(self, window, window_title, video_source=0):
         self.window = window
         self.window.title(window_title)
         self.video_source = video_source
         # open video source
         self.vid = MyVideoCapture(video_source)
-
+        
 
         
         # Create a canvas that can fit the above video source size
         self.canvas = Canvas(window, width = self.vid.width, height = self.vid.height+200)
         self.canvas.pack()
 
-        botFrame = Frame(window)
-        botFrame.pack(side=BOTTOM)
+        self.botFrame = Frame(window)
+        self.botFrame.pack(side=BOTTOM)
 
-        img = PIL.Image.open("GUI\stop.png")
+        imgpath = "GUI\stop.png"
+        img = PIL.Image.open(imgpath)
         img = img.resize((100,100), PIL.Image.ANTIALIAS)
         stop = PIL.ImageTk.PhotoImage(img)
-        #stop = PhotoImage(file="GUI\stop.png")
-
-        label1 = Label(botFrame, text = "Label stop", image=stop)
+        self.labelStop = Label(self.botFrame, text = "Label stop", image=stop)
+        self.labelStop.grid(row = 0, column = 0, sticky='nsew')
 
         
-        label2 = Label(botFrame, text = "Label 2")
-        label1.grid(row = 0, column = 0, sticky='nsew')
-        label2.grid(row = 1, column = 1, sticky='nsew')
 
         
         #self.canvas.create_window(100,100, window=label1)
         
         
         # After it is called once, the update method will be automatically called every delay milliseconds
-        self.delay = 30
+        self.delay = 15
         self.update()
         self.window.mainloop()
-
+        
     def update(self):
         # Get a frame from the video source
         ret, frame = self.vid.get_frame()
@@ -82,9 +82,9 @@ class App:
             (boxes, scores, classes, num) = sess.run(
                 [detection_boxes, detection_scores, detection_classes, num_detections],
                 feed_dict={image_tensor: frame_expanded})
-            
+            TempClasses = classes
             # Draw the results of the detection (aka 'visulaize the results')
-            vis_util.visualize_boxes_and_labels_on_image_array(
+            frame = vis_util.visualize_boxes_and_labels_on_image_array(
                 frame,
                 np.squeeze(boxes),
                 np.squeeze(classes).astype(np.int32),
@@ -94,9 +94,16 @@ class App:
                 line_thickness=8,
                 min_score_thresh=0.60)
             
-            self.photo = PIL.ImageTk.PhotoImage(image = PIL.Image.fromarray(frame))
+            self.photo = PIL.ImageTk.PhotoImage(image = PIL.Image.fromarray(frame[0]))
             self.canvas.create_image(0,0,image=self.photo, anchor=tkinter.NW)
         self.window.after(self.delay, self.update)
+        if(frame[1] == "speed80"):  
+            imgpath = "GUI\speed80.png"
+            img = PIL.Image.open(imgpath)
+            img = img.resize((100,100), PIL.Image.ANTIALIAS)
+            img = PIL.ImageTk.PhotoImage(img)
+            self.labelStop.configure(image = img)
+            self.labelStop.image = img
         
 class MyVideoCapture:
     def __init__(self, video_source=0):
