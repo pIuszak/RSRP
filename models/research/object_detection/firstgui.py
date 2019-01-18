@@ -53,7 +53,6 @@ class App:
 
         imgpath = "GUI\\empty.png"
         img = PIL.Image.open(imgpath)
-        img = img.resize((100,100), PIL.Image.ANTIALIAS)
         img = PIL.ImageTk.PhotoImage(img)
 
         self.StopLabelText = Label(self.botFrame, text = "")
@@ -84,12 +83,10 @@ class App:
         self.InfoLabelText = Label(self.botFrame, text = "Info")
         self.InfoLabelText.grid(row = 0, column = 5, sticky='nsew')
         self.InfoLabel = Label(self.botFrame, text = "InfoLabel", image=img)
-        self.InfoLabel.grid(row = 1, column = 5, sticky='nsew')
-        
-        #self.canvas.create_window(100,100, window=label1)
-        
+        self.InfoLabel.grid(row = 1, column = 5, sticky='nsew')        
         
         # After it is called once, the update method will be automatically called every delay milliseconds
+        #check overhead for 5/10/30/60 ms
         self.delay = 15
         self.update()
         self.window.mainloop()
@@ -122,14 +119,12 @@ class App:
         if(frame[1].startswith("speed")):
             imgpath = "GUI\speed"+frame[1][-2:]+".png"
             img = PIL.Image.open(imgpath)
-            img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
             self.SpeedLabel.configure(image = img)
             self.SpeedLabel.image = img
         if(frame[1].startswith("koniec_zakazu")):
             imgpath = "GUI\koniec_zakazu.png"
             img = PIL.Image.open(imgpath)
-            img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
             self.SpeedLabel.configure(image = img)
             self.SpeedLabel.image = img
@@ -137,7 +132,6 @@ class App:
         if(frame[1].startswith("zakaz_")):
             imgpath = "GUI\\"+frame[1]+".png"
             img = PIL.Image.open(imgpath)
-            img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
             self.ZakazLabel.configure(image = img)
             self.ZakazLabel.image = img
@@ -145,7 +139,6 @@ class App:
         if(frame[1].startswith("nakaz_")):
             imgpath = "GUI\\"+frame[1]+".png"
             img = PIL.Image.open(imgpath)
-            img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
             self.NakazLabel.configure(image = img)
             self.NakazLabel.image = img
@@ -153,7 +146,6 @@ class App:
         if(frame[1].startswith("stop") or frame[1] == "inne_niebezpieczenstwo"):
             imgpath = "GUI\stop.png"
             img = PIL.Image.open(imgpath)
-            img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
             self.StopLabel.configure(image = img)
             self.StopLabel.image = img
@@ -161,7 +153,6 @@ class App:
         if(frame[1]=="piciong" or frame[1].startswith("stromo") or frame[1].startswith("skret") or frame[1].startswith("przejscie") or frame[1]=="zakrety_zakrety" or frame[1]=="roboty" or frame[1]=="przejazd_kol_z_zaporami" or frame[1]=="dzieci"):
             imgpath = "GUI\\"+frame[1]+".png"
             img = PIL.Image.open(imgpath)
-            img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
             self.UwagaLabel.configure(image = img)
             self.UwagaLabel.image = img
@@ -169,7 +160,6 @@ class App:
         if(frame[1] == "droga_dla_rowerow" or frame[1] == "droga_ekspresowa" or frame[1] == "rondo" or frame[1] == "zawracanie" ):
             imgpath = "GUI\\"+frame[1]+".png"
             img = PIL.Image.open(imgpath)
-            img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
             self.InfoLabel.configure(image = img)
             self.InfoLabel.image = img
