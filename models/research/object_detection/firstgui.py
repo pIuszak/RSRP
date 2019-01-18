@@ -6,7 +6,6 @@ import cv2
 import numpy as np
 import tensorflow as tf
 import sys
-import re
 
 sys.path.append("..")
 from utils import label_map_util
@@ -46,7 +45,7 @@ class App:
         self.vid = MyVideoCapture(video_source)
         
         # Create a canvas that can fit the above video source size
-        self.canvas = Canvas(window, width = self.vid.width, height = self.vid.height+200)
+        self.canvas = Canvas(window, width = self.vid.width, height = self.vid.height)
         self.canvas.pack()
 
         self.botFrame = Frame(window)
@@ -81,6 +80,11 @@ class App:
         self.UwagaLabelText.grid(row = 0, column = 4, sticky='nsew')
         self.UwagaLabel = Label(self.botFrame, text = "UwagaLabel", image=img)
         self.UwagaLabel.grid(row = 1, column = 4, sticky='nsew')
+
+        self.InfoLabelText = Label(self.botFrame, text = "Info")
+        self.InfoLabelText.grid(row = 0, column = 5, sticky='nsew')
+        self.InfoLabel = Label(self.botFrame, text = "InfoLabel", image=img)
+        self.InfoLabel.grid(row = 1, column = 5, sticky='nsew')
         
         #self.canvas.create_window(100,100, window=label1)
         
@@ -115,7 +119,6 @@ class App:
             self.canvas.create_image(0,0,image=self.photo, anchor=tkinter.NW)
         self.window.after(self.delay, self.update)
 
-        bs = "\\"
         if(frame[1].startswith("speed")):
             imgpath = "GUI\speed"+frame[1][-2:]+".png"
             img = PIL.Image.open(imgpath)
@@ -140,15 +143,15 @@ class App:
             self.ZakazLabel.image = img
             
         if(frame[1].startswith("nakaz_")):
-            imgpath = "GUI"+bs[0]+frame[1]+".png"
+            imgpath = "GUI\\"+frame[1]+".png"
             img = PIL.Image.open(imgpath)
             img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
             self.NakazLabel.configure(image = img)
             self.NakazLabel.image = img
             
-        if(frame[1].startswith("stop")):
-            imgpath = "GUI"+bs[0]+frame[1]+".png"
+        if(frame[1].startswith("stop") or frame[1] == "inne_niebezpieczenstwo"):
+            imgpath = "GUI\stop.png"
             img = PIL.Image.open(imgpath)
             img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
@@ -156,12 +159,20 @@ class App:
             self.StopLabel.image = img
 
         if(frame[1]=="piciong" or frame[1].startswith("stromo") or frame[1].startswith("skret") or frame[1].startswith("przejscie") or frame[1]=="zakrety_zakrety" or frame[1]=="roboty" or frame[1]=="przejazd_kol_z_zaporami" or frame[1]=="dzieci"):
-            imgpath = "GUI"+bs[0]+frame[1]+".png"
+            imgpath = "GUI\\"+frame[1]+".png"
             img = PIL.Image.open(imgpath)
             img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
             self.UwagaLabel.configure(image = img)
             self.UwagaLabel.image = img
+
+        if(frame[1] == "droga_dla_rowerow" or frame[1] == "droga_ekspresowa" or frame[1] == "rondo" or frame[1] == "zawracanie" ):
+            imgpath = "GUI\\"+frame[1]+".png"
+            img = PIL.Image.open(imgpath)
+            img = img.resize((100,100), PIL.Image.ANTIALIAS)
+            img = PIL.ImageTk.PhotoImage(img)
+            self.InfoLabel.configure(image = img)
+            self.InfoLabel.image = img
         
 class MyVideoCapture:
     def __init__(self, video_source=0):
