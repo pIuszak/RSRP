@@ -37,7 +37,6 @@ detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
 num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 
 class App:
-    CURR_CLASS = 'N/A'
                 
     def __init__(self, window, window_title, video_source=0):
         self.window = window
@@ -55,21 +54,41 @@ class App:
         self.botFrame = Frame(window)
         self.botFrame.pack(side=BOTTOM)
 
-        imgpath = "GUI\stop.png"
+        imgpath = r'GUI\temp01.jpg'
         img = PIL.Image.open(imgpath)
         img = img.resize((100,100), PIL.Image.ANTIALIAS)
-        stop = PIL.ImageTk.PhotoImage(img)
-        self.labelStop = Label(self.botFrame, text = "Label stop", image=stop)
-        self.labelStop.grid(row = 0, column = 0, sticky='nsew')
+        img = PIL.ImageTk.PhotoImage(img)
 
-        
+        self.StopLabelText = Label(self.botFrame, text = "")
+        self.StopLabelText.grid(row = 0, column = 0, sticky='nsew')
+        self.StopLabel = Label(self.botFrame, text = "StopLabel", image=img)
+        self.StopLabel.grid(row = 1, column = 0, sticky='nsew')
 
+        self.SpeedLabelText = Label(self.botFrame, text = "Ograniczenie Prędkości:")
+        self.SpeedLabelText.grid(row = 0, column = 1, sticky='nsew')
+        self.SpeedLabel = Label(self.botFrame, text = "SpeedLabel", image=img)
+        self.SpeedLabel.grid(row = 1, column = 1, sticky='nsew')
+
+        self.ZakazLabelText = Label(self.botFrame, text = "Zakaz Label")
+        self.ZakazLabelText.grid(row = 0, column = 2, sticky='nsew')
+        self.ZakazLabel = Label(self.botFrame, text = "ZakazLabel", image=img)
+        self.ZakazLabel.grid(row = 1, column = 2, sticky='nsew')
+
+        self.NakazLabelText = Label(self.botFrame, text = "Nakaz Label")
+        self.NakazLabelText.grid(row = 0, column = 3, sticky='nsew')
+        self.NakazLabel = Label(self.botFrame, text = "NakazLabel", image=img)
+        self.NakazLabel.grid(row = 1, column = 3, sticky='nsew')
+
+        self.UwagaLabelText = Label(self.botFrame, text = "Uwaga Label")
+        self.UwagaLabelText.grid(row = 0, column = 4, sticky='nsew')
+        self.UwagaLabel = Label(self.botFrame, text = "UwagaLabel", image=img)
+        self.UwagaLabel.grid(row = 1, column = 4, sticky='nsew')
         
         #self.canvas.create_window(100,100, window=label1)
         
         
         # After it is called once, the update method will be automatically called every delay milliseconds
-        self.delay = 15
+        self.delay = 30
         self.update()
         self.window.mainloop()
         
@@ -97,13 +116,21 @@ class App:
             self.photo = PIL.ImageTk.PhotoImage(image = PIL.Image.fromarray(frame[0]))
             self.canvas.create_image(0,0,image=self.photo, anchor=tkinter.NW)
         self.window.after(self.delay, self.update)
-        if(frame[1] == "speed80"):  
-            imgpath = "GUI\speed80.png"
+
+        if(frame[1].startswith("speed")):
+            imgpath = "GUI\speed"+frame[1][-2:]+".png"
             img = PIL.Image.open(imgpath)
             img = img.resize((100,100), PIL.Image.ANTIALIAS)
             img = PIL.ImageTk.PhotoImage(img)
-            self.labelStop.configure(image = img)
-            self.labelStop.image = img
+            self.SpeedLabel.configure(image = img)
+            self.SpeedLabel.image = img
+        if(frame[1].startswith("zakaz_")):
+            imgpath = "GUI\speed"+frame[1]+".png"
+            img = PIL.Image.open(imgpath)
+            img = img.resize((100,100), PIL.Image.ANTIALIAS)
+            img = PIL.ImageTk.PhotoImage(img)
+            self.ZakazLabel.configure(image = img)
+            self.ZakazLabel.image = img
         
 class MyVideoCapture:
     def __init__(self, video_source=0):

@@ -1,0 +1,27 @@
+
+name: 'koniec_zakazu40'
+
+name: 'koniec_zakazu50'
+oba koñce zakazu taki na taki sam
+
+name: 'kurwa_co_to'
+
+name: 'sygnalizacja'
+
+name: 'inne_niebezpieczenstwo'
+
+name: 'dab_left'
+
+name: 'dab_right'
+
+name: 'daj_chinski_sprzedawca_jaj'
+
+name: 'osiedle'
+
+name: 'zakrety'
+
+name: 'wypadki'
+
+name: 'costam'
+
+name: 'zakaz_wjazdu_chin'
